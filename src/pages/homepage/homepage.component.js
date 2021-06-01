@@ -1,7 +1,8 @@
 import React from "react";
 import Directory from "../../components/directory/directory.component.js";
 import "./homepage.style.scss";
-const Homepage = function () {
+
+const HomePage = function () {
   return (
     <div className="homepage">
       <Directory />
@@ -9,4 +10,4 @@ const Homepage = function () {
   );
 };
 
-export default Homepage;
+export default HomePage;
