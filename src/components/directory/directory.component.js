@@ -1,64 +1,30 @@
 import React from "react";
 import MenuItem from "../menu-item/menu-item.component.js";
 import "./directory.styles.scss";
+import { connect } from "react-redux";
+import { createStructureSelector } from "reselect";
+import { selectDirectorySection } from "../../redux/directory/directory.selectors";
+const Directory = ({ sections }) => {
+  return (
+    <div className="directory-menu">
+      {sections.map(function (section) {
+        return (
+          <MenuItem
+            imageUrl={section.imageUrl}
+            key={section.id}
+            title={section.title}
+            size={section.size}
+            linkUrl={section.linkUrl}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
-class Directory extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      sections: [
-        {
-          title: "hats",
-          imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-          id: 1,
-          linkUrl: "hats",
-        },
-        {
-          title: "jackets",
-          imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-          id: 2,
-          linkUrl: "",
-        },
-        {
-          title: "sneakers",
-          imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-          id: 3,
-          linkUrl: "",
-        },
-        {
-          title: "womens",
-          imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-          size: "large",
-          id: 4,
-          linkUrl: "",
-        },
-        {
-          title: "mens",
-          imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-          size: "large",
-          id: 5,
-          linkUrl: "",
-        },
-      ],
-    };
-  }
-  render() {
-    return (
-      <div className="directory-menu">
-        {this.state.sections.map(function (section) {
-          return (
-            <MenuItem
-              imageUrl={section.imageUrl}
-              key={section.id}
-              title={section.title}
-              size={section.size}
-              linkUrl={section.linkUrl}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-export default Directory;
+const mapStateToProps = (state) => {
+  return {
+    sections: state.directory.sections,
+  };
+};
+export default connect(mapStateToProps)(Directory);
