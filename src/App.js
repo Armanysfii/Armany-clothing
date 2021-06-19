@@ -14,6 +14,7 @@ import Header from "./components/header/header.component.js";
 import HomePage from "./pages/homepage/homepage.component.js";
 import ShopPage from "./pages/shop/shop.component.js";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils.js";
+import { selectCollectionsForPreview } from "./redux/shop/shop.selectors";
 import CheckoutPage from "./pages/checkout/checkout.component";
 
 class App extends React.Component {
