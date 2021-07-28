@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.action";
-import "./App.css";
+import { GlobalStyle } from "./global.styles";
 
 import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component.js";
 import Header from "./components/header/header.component.js";
@@ -47,6 +47,7 @@ class App extends React.Component {
     return (
       <div>
         <Router>
+          <GlobalStyle />
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
